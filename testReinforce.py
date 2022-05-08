@@ -147,7 +147,7 @@ if __name__ == "__main__":
     inputfile = ''
     name = ''
     try:
-        opts, args = getopt.getopt(argv_, "hi:o:", ["ifile=", "name="])
+        opts, args = getopt.getopt(argv_, "hi:n:", ["ifile=", "name="])
     except getopt.GetoptError:
         print('testReinforce.py -i <inputfile> -n <name>')
         sys.exit(2)
