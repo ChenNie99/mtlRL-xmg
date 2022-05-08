@@ -1,12 +1,9 @@
-##
-# @file testReinforce.py
-# @author Keren Zhu
-# @date 10/31/2019
-# @brief The main for test REINFORCE
-#
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
 
 from datetime import datetime
 import os
+import sys, getopt
 
 import reinforce as RF
 from env import EnvGraph_mtl_xmg as Env # change this to switch abc/mtl/mtl_xmg
@@ -55,7 +52,7 @@ def testReinforce(filename, ben):
     TestRecordName = "./results/" + ben + "detailed-TestRecord.csv"
     for idx in range(200):
         print("Start epoch:", idx)
-        returns = reinforce.episode(phaseTrain=True, epoch=idx) # [nodes of Aig, depth of Aig]
+        returns, command_sequence = reinforce.episode(phaseTrain=True, epoch=idx) # [nodes of Aig, depth of Aig]
 
         seqLen = reinforce.lenSeq
         line = "iter " + str(idx) + " returns " + str(returns) + " seq Length " + str(seqLen) + "\n"
@@ -66,6 +63,8 @@ def testReinforce(filename, ben):
 
         with open(TestRecordName, 'a') as tr:
             line = ""
+            line += command_sequence
+            line += " "
             line += str(lastfive[-1].numNodes)
             line += " "
             line += str(lastfive[-1].level)
@@ -143,6 +142,27 @@ if __name__ == "__main__":
         vbaseline.update(np.array([2264. / 2675,   45. / 50, 2282. / 2675,   45. / 50]), 11.97 / 2675)
         vbaseline.update(np.array([2255. / 2675,   44. / 50, 2264. / 2675,   44. / 50]), 3 / 2675)
     '''
+
+    argv_ = sys.argv[1:]
+    inputfile = ''
+    name = ''
+    try:
+        opts, args = getopt.getopt(argv_, "hi:o:", ["ifile=", "name="])
+    except getopt.GetoptError:
+        print('testReinforce.py -i <inputfile> -n <name>')
+        sys.exit(2)
+    for opt, arg in opts:
+        if opt == '-h':
+            print('test.py -i <inputfile> -n <name>')
+            sys.exit()
+        elif opt in ("-i", "--ifile"):
+            inputfile = arg
+        elif opt in ("-n", "--name"):
+            name = arg
+    print("input file:", inputfile)
+    print("name:", name)
+    testReinforce(inputfile, name+"_xmg_9steps_5-9-v5.0 4-in-1")
+
     #i10 c1355 c7552 c6288 c5315 dalu k2 mainpla apex1 bc0
     #testReinforce("./bench/MCNC/Combinational/blif/dalu.blif", "dalu")
     #testReinforce("./bench/MCNC/Combinational/blif/prom1.blif", "prom1")
@@ -153,7 +173,7 @@ if __name__ == "__main__":
     #testReinforce("/home/lcy/Downloads/MIG_project-main_3_21/MIG_project-main/mult_4_syn_out_opt_1.v", "mult_4")
     #testReinforce("/home/lcy/Downloads/MIG_project-main_3_21/MIG_project-main/mult_64_syn_out_opt_1.v", "mult_64")
     #testReinforce("/home/lcy/Downloads/MIG_project-main_4-16/MIG_project-main/mult_8_syn_out_opt_1.v", "mult_8_xmg_10steps-4-18")
-    testReinforce("/home/MIG_project-main/epfl_max_syn_out_opt_1.v", "epfl_max_xmg_9steps_5-7-v5.0 4-in-1")
+    # testReinforce("/home/MIG_project-main/epfl_max_syn_out_opt_1.v", "epfl_max_xmg_9steps_5-7-v5.0 4-in-1")
     #testReinforce("/home/lcy/Downloads/MIG_project-main_3_21/MIG_project-main/div_32_syn_out_opt_1.v", "div_32_xmg_10steps-4-21")
     #testReinforce("/home/lcy/Downloads/MIG_project-main-4-19/MIG_project-main/div_16_syn_out_opt_1.v", "div_16_xmg_9steps-5-3-Release4.0 serial4-in-1")
     #testReinforce("/home/lcy/Downloads/MIG_project-main-4-19/MIG_project-main/add_64_syn_out_opt_1.v", "add_64_xmg_9steps-4-23")
