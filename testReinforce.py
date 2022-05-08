@@ -35,9 +35,9 @@ def testReinforce(filename, ben):
         envCopyList.append(Env(filename))
     env = Env(filename)
     #vApprox = Linear(env.dimState(), env.numActions())
-    print("Env init ok")
+
     vApprox = RF.PiApprox(env.dimState(), env.numActions(), 8e-4, RF.FcModelGraph) #dimStates, numActs, alpha, network
-    print("dimstate:",env.dimState())
+    print("dimstate:", env.dimState())
     print("numAction:", env.numActions())
     # print("vApprox:", vApprox)
     # baseline = RF.Baseline(0)
@@ -97,10 +97,8 @@ def testReinforce(filename, ben):
         line += str(lastfive[0].level)
         #line += "\n"
         line += "random_test: "
-        for i in envCopyList:
-            random_test += i.random
-
-        line += str(random_test/processes)
+        line += str(env.random_action_test())
+        line += " "
         line += str(StartTime)
         line += " "
         line += str(EndTime)
@@ -161,7 +159,7 @@ if __name__ == "__main__":
             name = arg
     print("input file:", inputfile)
     print("name:", name)
-    testReinforce(inputfile, name+"_xmg_9steps_5-9-v5.0 4-in-1")
+    testReinforce(inputfile, name+"_xmg_9steps_4-in-1")
 
     #i10 c1355 c7552 c6288 c5315 dalu k2 mainpla apex1 bc0
     #testReinforce("./bench/MCNC/Combinational/blif/dalu.blif", "dalu")
