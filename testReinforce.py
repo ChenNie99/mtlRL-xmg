@@ -30,8 +30,8 @@ def takeSecond(elem):
     return elem[0]
 def testReinforce(filename, ben):
     now = datetime.now()
-    dateTime = now.strftime("%m/%d/%Y, %H:%M:%S") + "\n"
-    print("StartTime ", dateTime)
+    StartTime = now.strftime("%m/%d/%Y, %H:%M:%S") + "\n"
+    print("StartTime ", StartTime)
     processes = 4
     envCopyList = []
     for i in range(processes):
@@ -51,8 +51,8 @@ def testReinforce(filename, ben):
 
     lastfive = []
     record = []
-    resultName = "./results/" + ben + ".csv"
-    TestRecordName = "./results/" + ben + "TestRecord-3.csv"
+    resultName = "./results/" + ben + "basic-info.csv"
+    TestRecordName = "./results/" + ben + "detailed-TestRecord.csv"
     for idx in range(200):
         print("Start epoch:", idx)
         returns = reinforce.episode(phaseTrain=True, epoch=idx) # [nodes of Aig, depth of Aig]
@@ -81,39 +81,51 @@ def testReinforce(filename, ben):
     #lastfive.sort(key=lambda x : x.level)
     lastfive = sorted(lastfive)
     #print("lastfive:", lastfive)
-
-    with open(resultName, 'a') as andLog:
-        line = ""
-        line += str(lastfive[0].numNodes)
-        line += " "
-        line += str(lastfive[0].level)
-        line += "\n"
-        andLog.write(line)
+    random_test = 0
     rewards = reinforce.sumRewards
     print("rewards:", rewards)
 
     now = datetime.now()
-    dateTime = now.strftime("%m/%d/%Y, %H:%M:%S") + "\n"
-    print("EndTime ", dateTime)
+    EndTime = now.strftime("%m/%d/%Y, %H:%M:%S") + "\n"
+    print("EndTime ", EndTime)
+    with open(resultName, 'a') as andLog:
+        line = "processes: "
+        line += str(processes)
+        line += " "
+        line += "best_num_of_gate: "
+        line += str(lastfive[0].numNodes)
+        line += " "
+        line += str(lastfive[0].level)
+        #line += "\n"
+        line += "random_test: "
+        for i in envCopyList:
+            random_test += i.random
+
+        line += str(random_test/processes)
+        line += str(StartTime)
+        line += " "
+        line += str(EndTime)
+        andLog.write(line)
 
 
-    '''with open('./results/sum_rewards.csv', 'a') as rewardLog:
-        line = ""
-        for idx in range(len(rewards)):
-            line += str(rewards[idx]) 
-            if idx != len(rewards) - 1:
-                line += ","
-        line += "\n"
-        rewardLog.write(line)'''
-    """with open ('./results/converge.csv', 'a') as convergeLog:
-        line = ""
-        returns = reinforce.episode(phaseTrain=False)
-        line += str(returns[0])
-        line += ","
-        line += str(returns[1])
-        line += "\n"
-        convergeLog.write(line)
-    """
+
+    # with open('./results/sum_rewards.csv', 'a') as rewardLog:
+    #     line = ""
+    #     for idx in range(len(rewards)):
+    #         line += str(rewards[idx])
+    #         if idx != len(rewards) - 1:
+    #             line += ","
+    #     line += "\n"
+    #     rewardLog.write(line)
+    # with open ('./results/converge.csv', 'a') as convergeLog:
+    #     line = ""
+    #     returns = reinforce.episode(phaseTrain=False)
+    #     line += str(returns[0])
+    #     line += ","
+    #     line += str(returns[1])
+    #     line += "\n"
+    #     convergeLog.write(line)
+    #
 
 
 

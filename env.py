@@ -662,7 +662,7 @@ class EnvGraph_mtl_xmg(object):
               " total reward ", self.statValue(resyn2Stats))
         # print("test the runtime for each action")
 
-        self.random_action_test()
+        self.random = self.random_action_test()
         #input()
         #os.system("pause")
         #self.reset()
@@ -672,7 +672,7 @@ class EnvGraph_mtl_xmg(object):
         act_list = [0, 1, 2, 3, 4, 5, 6, 7]
         sum = 0
         epoch = 10
-        for j in range(10):
+        for j in range(5):
             self.reset()
             for i in range(10):
                 select = random.choice(act_list)
@@ -684,6 +684,7 @@ class EnvGraph_mtl_xmg(object):
 
 
         print("average num of random action", sum/epoch)
+        return sum/epoch
     def test_action_runtime(self):
         starttime = time.time()
         for i in range(1):
