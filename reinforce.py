@@ -469,7 +469,11 @@ class Reinforce(object):
         # print("select worker:", sum_reward.index(max(sum_reward)))
         trajectory = res[sum_reward.index(max(sum_reward))]
         # trajectory = res[random.randint(0, 3)]
-
+        command_sequence = ""
+        for i in trajectory.actions:
+            command_sequence += str(i)
+            command_sequence += " "
+        # self.memTrajectory.append(trajectory)
         self._env = trajectory.env_temp
         self.updateTrajectory(trajectory, phaseTrain)
 
@@ -495,7 +499,7 @@ class Reinforce(object):
         #what is this, seems useless
         #print("End self._pi.episode()")
 
-        return self._env.returns()
+        return self._env.returns(), command_sequence
         #that is return [self._curStats.numAnd , self._curStats.lev]
     def updateTrajectory(self, trajectory, phaseTrain=True):
         print("UpdateTraj")
@@ -516,8 +520,8 @@ class Reinforce(object):
             #print("G:", G)
             state = states[tIdx]
             action = actions[tIdx]
-            baseline = self._baseline(state[0])  # get an approximation with an FC model and combined tensor
-            #print("baseline:", baseline)
+            baseline = self._baseline(state[0])  # get an approximation with an FC model and combined tensor , using BaselineVApprox
+            # print("baseline:", baseline)
             delta = G - baseline
             #print("delta:", delta)
             """
