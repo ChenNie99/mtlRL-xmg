@@ -48,8 +48,8 @@ def testReinforce(filename, ben):
 
     lastfive = []
     record = []
-    resultName = "./results/" + ben + "basic-info.csv"
-    TestRecordName = "./results/" + ben + "detailed-TestRecord.csv"
+    resultName = "/home/abcRL2.0-4-24/results/" + ben + "basic-info.csv"
+    TestRecordName = "/home/abcRL2.0-4-24/results/" + ben + "detailed-TestRecord.csv"
     for idx in range(200):
         print("Start epoch:", idx)
         returns, command_sequence = reinforce.episode(phaseTrain=True, epoch=idx) # [nodes of Aig, depth of Aig]
