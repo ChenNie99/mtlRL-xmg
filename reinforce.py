@@ -520,8 +520,8 @@ class Reinforce(object):
             #print("G:", G)
             state = states[tIdx]
             action = actions[tIdx]
-            baseline = self._baseline(state[0])  # get an approximation with an FC model and combined tensor
-            #print("baseline:", baseline)
+            baseline = self._baseline(state[0])  # get an approximation with an FC model and combined tensor , using BaselineVApprox
+            # print("baseline:", baseline)
             delta = G - baseline
             #print("delta:", delta)
             """

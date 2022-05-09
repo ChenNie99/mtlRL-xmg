@@ -654,7 +654,7 @@ class EnvGraph_mtl_xmg(object):
               " total reward ", self.statValue(resynStats))
         self.baselineActions()
         resyn2Stats = self._abc.xmgStats()
-        totalReward = self.statValue(initStats) - self.statValue(resynStats)
+        totalReward = self.statValue(initStats) - self.statValue(resyn2Stats)
         self._rewardBaseline = totalReward / length_of_command # 10 is the length of compress2rs sequence
         print("After double runs of baseline:")
         print("baseline num of XmgNodes ", resyn2Stats.numXmgNodes,
