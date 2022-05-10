@@ -617,7 +617,7 @@ class EnvGraph_mtl_xmg(object):
     """
     @brief the overall concept of environment, the different. use the compress2rs as target
     """
-    def __init__(self, xmgfile):
+    def __init__(self, xmgfile, rewardBaseline):
         self._abc = mtlpy.MtlInterface()
         #self._abc = abcPy.AbcInterface()
         self._xmgfile = xmgfile
@@ -632,7 +632,7 @@ class EnvGraph_mtl_xmg(object):
         self.initNumXmgNodes = float(initStats.numXmgNodes)
         self.initNumXmgGates = float(initStats.numXmgGates)
         self.initLev = float(initStats.xmg_lev)
-
+        self._rewardBaseline = rewardBaseline
 
 
 
@@ -644,6 +644,17 @@ class EnvGraph_mtl_xmg(object):
         # print("baseline Depth", self.initLev)
         print("Initial value", self.statValue(initStats))
 
+
+
+        # print("test the runtime for each action")
+
+        # self.random = self.random_action_test()
+        #input()
+        #os.system("pause")
+        #self.reset()
+        #self.test_action_runtime_2()
+    def baseline_command_sequence_test(self):
+        initStats = self._abc.xmgStats()
         self.baselineActions()
         print("After run of baseline:")
         resynStats = self._abc.xmgStats()
@@ -654,19 +665,16 @@ class EnvGraph_mtl_xmg(object):
               " total reward ", self.statValue(resynStats))
         self.baselineActions()
         resyn2Stats = self._abc.xmgStats()
+        self.baseline_result = resynStats
+        self.baseline_double_run_result = resyn2Stats
         totalReward = self.statValue(initStats) - self.statValue(resyn2Stats)
-        self._rewardBaseline = totalReward / length_of_command # 10 is the length of compress2rs sequence
+        self._rewardBaseline = totalReward / length_of_command  # 9 is the length of compress2rs sequence
         print("After double runs of baseline:")
         print("baseline num of XmgNodes ", resyn2Stats.numXmgNodes,
               "baseline num of XmgGates ", float(resyn2Stats.numXmgGates),
               " total reward ", self.statValue(resyn2Stats))
-        # print("test the runtime for each action")
-
-        # self.random = self.random_action_test()
-        #input()
-        #os.system("pause")
-        #self.reset()
-        #self.test_action_runtime_2()
+        self.reset()
+        return self._rewardBaseline
     def random_action_test(self):
 
         act_list = [0, 1, 2, 3, 4, 5, 6, 7]
