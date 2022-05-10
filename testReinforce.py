@@ -29,11 +29,14 @@ def testReinforce(filename, ben):
     now = datetime.now()
     StartTime = now.strftime("%m/%d/%Y, %H:%M:%S") + "\n"
     print("StartTime ", StartTime)
+    env = Env(filename, 0)
+    global_baseline_reward = env.baseline_command_sequence_test()
+    print("global_baseline_reward_for_each_step", global_baseline_reward)
     processes = 4
     envCopyList = []
     for i in range(processes):
-        envCopyList.append(Env(filename))
-    env = Env(filename)
+        envCopyList.append(Env(filename, global_baseline_reward))
+
     #vApprox = Linear(env.dimState(), env.numActions())
 
     vApprox = RF.PiApprox(env.dimState(), env.numActions(), 8e-4, RF.FcModelGraph) #dimStates, numActs, alpha, network
@@ -96,11 +99,16 @@ def testReinforce(filename, ben):
         line += " "
         line += str(lastfive[0].level)
         #line += "\n"
-        line += "random_test: "
+        line += "random_test:"
         line += str(env.random_action_test())
         line += " "
+        line += "baseline_run_result:"
+        line += str(env.baseline_result)
+        line += " baseline_double_run_result:"
+        line += str(env.baseline_double_run_result)
+        line += "\n"
         line += str(StartTime)
-        line += " "
+        # line += " "
         line += str(EndTime)
         andLog.write(line)
 
