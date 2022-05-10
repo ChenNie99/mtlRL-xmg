@@ -33,6 +33,7 @@ def testReinforce(filename, ben, process):
     global_baseline_reward = env.baseline_command_sequence_test()
     print("global_baseline_reward_for_each_step", global_baseline_reward)
     processes = process
+    print("processes:", processes)
     envCopyList = []
     for i in range(processes):
         envCopyList.append(Env(filename, global_baseline_reward))
@@ -167,10 +168,10 @@ if __name__ == "__main__":
         elif opt in ("-n", "--name"):
             name = arg
         elif opt in ("-p", "--process"):
-            name = arg
+            process = arg
     print("input file:", inputfile)
     print("name:", name)
-    print("process", process)
+    # print("process", process)
     testReinforce(inputfile, name+"_xmg_9steps_"+process+"-in-1", process)
 
     #i10 c1355 c7552 c6288 c5315 dalu k2 mainpla apex1 bc0
