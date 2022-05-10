@@ -654,6 +654,7 @@ class EnvGraph_mtl_xmg(object):
         #self.reset()
         #self.test_action_runtime_2()
     def baseline_command_sequence_test(self):
+        initStats = self._abc.xmgStats()
         self.baselineActions()
         print("After run of baseline:")
         resynStats = self._abc.xmgStats()
