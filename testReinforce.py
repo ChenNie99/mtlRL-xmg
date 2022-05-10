@@ -154,7 +154,7 @@ if __name__ == "__main__":
     name = ''
     process = ''
     try:
-        opts, args = getopt.getopt(argv_, "hi:n:", ["ifile=", "name=", "process="])
+        opts, args = getopt.getopt(argv_, "hi:n:p:", ["ifile=", "name=", "process="])
     except getopt.GetoptError:
         print('testReinforce.py -i <inputfile> -n <name> -p <process>')
         sys.exit(2)
@@ -171,7 +171,7 @@ if __name__ == "__main__":
     print("input file:", inputfile)
     print("name:", name)
     print("process", process)
-    testReinforce(inputfile, name+"_xmg_9steps_4-in-1", process)
+    testReinforce(inputfile, name+"_xmg_9steps_"+process+"-in-1", process)
 
     #i10 c1355 c7552 c6288 c5315 dalu k2 mainpla apex1 bc0
     #testReinforce("./bench/MCNC/Combinational/blif/dalu.blif", "dalu")
