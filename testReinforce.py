@@ -25,14 +25,15 @@ class AbcReturn:
         return int(self.level) == int(other.level) and int(self.numNodes) == int(self.numNodes)
 def takeSecond(elem):
     return elem[0]
-def testReinforce(filename, ben):
+def testReinforce(filename, ben, process):
     now = datetime.now()
     StartTime = now.strftime("%m/%d/%Y, %H:%M:%S") + "\n"
     print("StartTime ", StartTime)
     env = Env(filename, 0)
     global_baseline_reward = env.baseline_command_sequence_test()
     print("global_baseline_reward_for_each_step", global_baseline_reward)
-    processes = 4
+    processes = process
+    print("processes:", processes)
     envCopyList = []
     for i in range(processes):
         envCopyList.append(Env(filename, global_baseline_reward))
@@ -152,22 +153,26 @@ if __name__ == "__main__":
     argv_ = sys.argv[1:]
     inputfile = ''
     name = ''
+    process = ''
     try:
-        opts, args = getopt.getopt(argv_, "hi:n:", ["ifile=", "name="])
+        opts, args = getopt.getopt(argv_, "hi:n:p:", ["ifile=", "name=", "process="])
     except getopt.GetoptError:
-        print('testReinforce.py -i <inputfile> -n <name>')
+        print('testReinforce.py -i <inputfile> -n <name> -p <process>')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print('test.py -i <inputfile> -n <name>')
+            print('test.py -i <inputfile> -n <name> -p <process>')
             sys.exit()
         elif opt in ("-i", "--ifile"):
             inputfile = arg
         elif opt in ("-n", "--name"):
             name = arg
+        elif opt in ("-p", "--process"):
+            process = arg
     print("input file:", inputfile)
     print("name:", name)
-    testReinforce(inputfile, name+"_xmg_9steps_4-in-1")
+    # print("process", process)
+    testReinforce(inputfile, name+"_xmg_9steps_"+process+"-in-1", int(process))
 
     #i10 c1355 c7552 c6288 c5315 dalu k2 mainpla apex1 bc0
     #testReinforce("./bench/MCNC/Combinational/blif/dalu.blif", "dalu")
