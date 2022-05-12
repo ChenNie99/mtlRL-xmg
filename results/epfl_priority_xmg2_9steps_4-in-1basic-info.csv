@@ -1,0 +1,5 @@
+processes: 4 best_num_of_gate: 545.0 4294967295.0random_test: 1062.3 05/09/2022, 04:54:13
+ 05/09/2022, 08:24:54
+processes: 4 best_num_of_gate: 535.0 4294967295.0random_test:1203.6 baseline_run_result:<mtlPy.XmgStats object at 0x7fab1c0222f0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7fab1be6aab0>
+05/11/2022, 22:53:58
+05/12/2022, 02:12:08
