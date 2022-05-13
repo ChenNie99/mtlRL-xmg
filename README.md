@@ -1,13 +1,3 @@
-ABC\_RL
---------
-Reinforcement learning for logic synthesis.
-
-This is the source codes for our paper "Exploring Logic Optimizations with Reinforcement Learning and Graph Convolutional Network", published at 2nd ACM/IEEE Workshop on Machine Learning for CAD (MLCAD), Nov. 2020.
-
-The authors include [Keren Zhu](https://krz.engineer), Mingjie Liu, Hao Chen, Zheng Zhao and David Z. Pan.
-
---------
-# Prerequsites
 
 # Python environment
 
@@ -20,13 +10,6 @@ Pytorch 1.3
 The project has other dependencies such as `numpy, six, etc.`
 Please installing the dependencies correspondingly.
 
-# abc\_py
-
-The project requires the Python API, [abc\_py](https://github.com/krzhu/abc\_py), for [Berkeley-abc](https://github.com/berkeley-abc/abc).
-
-Please refer to the Github page of abc\_py for installing instruction.
-
---------
 
 # Benchmarks
 
@@ -36,14 +19,20 @@ Benmarks can be found in [url](https://ddd.fit.cvut.cz/prj/Benchmarks/index.php?
 
 # Usage
 
-The current version can execute on combinational `.aig` and `.blif` benchmarks.
+The current version can execute on combinational `.v` benchmarks.
 To run the REINFORCE algorithm, please first edit the `python/rl/testReinforce.py` for the benchmark circuit.
-And execute `python3 testReinforce.py`
+And preprocess the target verilog file:
 
+yosys -p "read_verilog name.v; synth -auto-top; clean; write_verilog name_syn.v"
+./converter -v name_syn.v
+./mig name_syn_out.v 1 ""
+
+And execute `python3 testReinforce.py -i <path of file> -n <custom name> -p <num of process>`
+Or use the verilog_to_xmg.sh to automately optimize a raw verilog file:
+such as:
+input file: epfl_max
+processes: 4
 
 --------
 
-# Contact
-
-Keren Zhu, UT Austin (keren.zhu AT utexas.edu)
 # mtlRL-xmg
