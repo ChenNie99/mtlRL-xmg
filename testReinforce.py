@@ -172,7 +172,7 @@ if __name__ == "__main__":
     print("input file:", inputfile)
     print("name:", name)
     # print("process", process)
-    testReinforce(inputfile, name+"_xmg_9steps_"+process+"-in-1", process)
+    testReinforce(inputfile, name+"_xmg_9steps_"+process+"-in-1", int(process))
 
     #i10 c1355 c7552 c6288 c5315 dalu k2 mainpla apex1 bc0
     #testReinforce("./bench/MCNC/Combinational/blif/dalu.blif", "dalu")
