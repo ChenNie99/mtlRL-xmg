@@ -25,7 +25,7 @@ class AbcReturn:
         return int(self.level) == int(other.level) and int(self.numNodes) == int(self.numNodes)
 def takeSecond(elem):
     return elem[0]
-def testReinforce(filename, ben, process):
+def testReinforce(filename, ben, process, brief_name):
     now = datetime.now()
     StartTime = now.strftime("%m/%d/%Y, %H:%M:%S") + "\n"
     print("StartTime ", StartTime)
