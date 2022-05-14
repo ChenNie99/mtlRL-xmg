@@ -3,3 +3,6 @@ processes: 4 best_num_of_gate: 595.0 4294967295.0random_test: 746.7 05/10/2022, 
 processes: 16 best_num_of_gate: 602.0 4294967295.0random_test:714.0 baseline_run_result:<mtlPy.XmgStats object at 0x7f4ee388ea70> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f4ee388e930>
 05/10/2022, 23:06:42
 05/11/2022, 17:51:52
+processes: 16 best_num_of_gate: 590.0 4294967295.0random_test:713.4 baseline_run_result:<mtlPy.XmgStats object at 0x7f09d3d73970> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f09d3d69d30>
+05/11/2022, 21:24:08
+05/13/2022, 11:06:34

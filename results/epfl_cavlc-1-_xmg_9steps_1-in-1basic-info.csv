@@ -1,0 +1,111 @@
+processes: 1 best_num_of_gate: 596.0 4294967295.0random_test:724.1 baseline_run_result:<mtlPy.XmgStats object at 0x7f5a60159c70> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f5a601777f0>
+05/11/2022, 02:42:32
+05/11/2022, 04:35:41
+processes: 1 best_num_of_gate: 600.0 4294967295.0random_test:748.4 baseline_run_result:<mtlPy.XmgStats object at 0x7f530407db70> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f5304250570>
+05/11/2022, 04:38:27
+05/11/2022, 06:49:58
+processes: 1 best_num_of_gate: 600.0 4294967295.0random_test:727.6 baseline_run_result:<mtlPy.XmgStats object at 0x7f4acbf4cb70> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f4acbf697b0>
+05/11/2022, 06:52:17
+05/11/2022, 08:30:19
+processes: 1 best_num_of_gate: 599.0 4294967295.0random_test:686.4 baseline_run_result:<mtlPy.XmgStats object at 0x7f56dc1568b0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f56dc15c030>
+05/11/2022, 08:33:31
+05/11/2022, 10:43:39
+processes: 1 best_num_of_gate: 597.0 4294967295.0random_test:737.5 baseline_run_result:<mtlPy.XmgStats object at 0x7f01c11966b0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f01c0fcf670>
+05/11/2022, 10:46:58
+05/11/2022, 12:43:43
+processes: 1 best_num_of_gate: 601.0 4294967295.0random_test:738.8 baseline_run_result:<mtlPy.XmgStats object at 0x7f72f79809f0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f72f7983170>
+05/11/2022, 12:46:23
+05/11/2022, 14:27:25
+processes: 1 best_num_of_gate: 593.0 4294967295.0random_test:753.0 baseline_run_result:<mtlPy.XmgStats object at 0x7f9e3e6fbbb0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f9e3e6ecf70>
+05/11/2022, 14:29:52
+05/11/2022, 16:48:02
+processes: 1 best_num_of_gate: 597.0 4294967295.0random_test:728.5 baseline_run_result:<mtlPy.XmgStats object at 0x7f3eb47ee9b0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f3eb47f1130>
+05/11/2022, 16:50:17
+05/11/2022, 18:43:12
+processes: 1 best_num_of_gate: 595.0 4294967295.0random_test:708.3 baseline_run_result:<mtlPy.XmgStats object at 0x7fb8f774fa30> baseline_double_run_result:<mtlPy.XmgStats object at 0x7fb8f77521b0>
+05/11/2022, 18:45:07
+05/11/2022, 20:35:01
+processes: 1 best_num_of_gate: 599.0 4294967295.0random_test:699.3 baseline_run_result:<mtlPy.XmgStats object at 0x7ff69d491eb0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7ff69d4916f0>
+05/11/2022, 20:37:18
+05/11/2022, 22:43:15
+processes: 1 best_num_of_gate: 601.0 4294967295.0random_test:751.4 baseline_run_result:<mtlPy.XmgStats object at 0x7f6180faef30> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f6180fae830>
+05/11/2022, 22:46:22
+05/12/2022, 00:54:44
+processes: 1 best_num_of_gate: 601.0 4294967295.0random_test:723.6 baseline_run_result:<mtlPy.XmgStats object at 0x7f5020860930> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f50208630b0>
+05/12/2022, 00:57:16
+05/12/2022, 03:05:08
+processes: 1 best_num_of_gate: 602.0 4294967295.0random_test:762.9 baseline_run_result:<mtlPy.XmgStats object at 0x7fcfce425a70> baseline_double_run_result:<mtlPy.XmgStats object at 0x7fcfce408e70>
+05/12/2022, 03:08:19
+05/12/2022, 05:11:01
+processes: 1 best_num_of_gate: 605.0 4294967295.0random_test:731.6 baseline_run_result:<mtlPy.XmgStats object at 0x7fee5d456bb0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7fee5d4607f0>
+05/12/2022, 05:12:47
+05/12/2022, 07:30:32
+processes: 1 best_num_of_gate: 598.0 4294967295.0random_test:735.6 baseline_run_result:<mtlPy.XmgStats object at 0x7f648de917f0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f648dbd3830>
+05/12/2022, 07:32:31
+05/12/2022, 09:43:29
+processes: 1 best_num_of_gate: 601.0 4294967295.0random_test:731.7 baseline_run_result:<mtlPy.XmgStats object at 0x7f13cd173c30> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f13cd1909b0>
+05/12/2022, 09:46:13
+05/12/2022, 12:23:56
+processes: 1 best_num_of_gate: 595.0 4294967295.0random_test:729.1 baseline_run_result:<mtlPy.XmgStats object at 0x7f36aeb66930> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f36aeb690b0>
+05/12/2022, 12:26:33
+05/12/2022, 14:28:13
+processes: 1 best_num_of_gate: 601.0 4294967295.0random_test:709.6 baseline_run_result:<mtlPy.XmgStats object at 0x7f7d0b156e70> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f7d0b13c870>
+05/12/2022, 14:30:17
+05/12/2022, 16:37:55
+processes: 1 best_num_of_gate: 600.0 4294967295.0random_test:739.7 baseline_run_result:<mtlPy.XmgStats object at 0x7ff7691508f0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7ff768d9a870>
+05/12/2022, 16:39:54
+05/12/2022, 18:41:41
+processes: 1 best_num_of_gate: 598.0 4294967295.0random_test:718.5 baseline_run_result:<mtlPy.XmgStats object at 0x7f1c107398f0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f1c10739870>
+05/12/2022, 18:44:01
+05/12/2022, 20:42:56
+processes: 1 best_num_of_gate: 600.0 4294967295.0random_test:731.1 baseline_run_result:<mtlPy.XmgStats object at 0x7fdd9d8ea9b0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7fdd9d8ed130>
+05/12/2022, 20:45:07
+05/12/2022, 22:53:01
+processes: 1 best_num_of_gate: 599.0 4294967295.0random_test:758.4 baseline_run_result:<mtlPy.XmgStats object at 0x7f27468e2eb0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f27468e2d70>
+05/12/2022, 22:56:34
+05/13/2022, 00:58:00
+processes: 1 best_num_of_gate: 601.0 4294967295.0random_test:756.6 baseline_run_result:<mtlPy.XmgStats object at 0x7f03d7b4d9b0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f03d7b50130>
+05/13/2022, 01:01:00
+05/13/2022, 03:10:23
+processes: 1 best_num_of_gate: 601.0 4294967295.0random_test:737.4 baseline_run_result:<mtlPy.XmgStats object at 0x7ff9f4d6abb0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7ff9f4d6c330>
+05/13/2022, 03:13:05
+05/13/2022, 04:59:47
+processes: 1 best_num_of_gate: 594.0 4294967295.0random_test:704.7 baseline_run_result:<mtlPy.XmgStats object at 0x7fd831000470> baseline_double_run_result:<mtlPy.XmgStats object at 0x7fd827d44930>
+05/13/2022, 05:02:12
+05/13/2022, 07:13:10
+processes: 1 best_num_of_gate: 601.0 4294967295.0random_test:741.6 baseline_run_result:<mtlPy.XmgStats object at 0x7fe18d0bf9f0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7fe18d37c730>
+05/13/2022, 07:16:58
+05/13/2022, 08:59:00
+processes: 1 best_num_of_gate: 599.0 4294967295.0random_test:724.2 baseline_run_result:<mtlPy.XmgStats object at 0x7fc7aef61970> baseline_double_run_result:<mtlPy.XmgStats object at 0x7fc7aef640f0>
+05/13/2022, 09:01:02
+05/13/2022, 11:12:37
+processes: 1 best_num_of_gate: 599.0 4294967295.0random_test:734.9 baseline_run_result:<mtlPy.XmgStats object at 0x7f21601b38f0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f21601b6070>
+05/13/2022, 11:14:55
+05/13/2022, 13:08:11
+processes: 1 best_num_of_gate: 593.0 4294967295.0random_test:710.9 baseline_run_result:<mtlPy.XmgStats object at 0x7f1ad14289f0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f1ad142b170>
+05/13/2022, 13:10:34
+05/13/2022, 15:15:06
+processes: 1 best_num_of_gate: 596.0 4294967295.0random_test:789.6 baseline_run_result:<mtlPy.XmgStats object at 0x7fad10b79ab0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7fad10b7b230>
+05/13/2022, 15:17:07
+05/13/2022, 17:20:34
+processes: 1 best_num_of_gate: 601.0 4294967295.0random_test:769.6 baseline_run_result:<mtlPy.XmgStats object at 0x7f4f80e673f0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f4f77bab9b0>
+05/13/2022, 17:22:07
+05/13/2022, 19:01:42
+processes: 1 best_num_of_gate: 594.0 4294967295.0random_test:710.1 baseline_run_result:<mtlPy.XmgStats object at 0x7f3c14c4d930> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f3c14c50030>
+05/13/2022, 19:03:45
+05/13/2022, 21:08:03
+processes: 1 best_num_of_gate: 599.0 4294967295.0random_test:741.9 baseline_run_result:<mtlPy.XmgStats object at 0x7f093e8f8df0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f093e8f8630>
+05/13/2022, 21:10:42
+05/13/2022, 22:53:56
+processes: 1 best_num_of_gate: 598.0 4294967295.0random_test:711.2 baseline_run_result:<mtlPy.XmgStats object at 0x7ff28a162db0> baseline_double_run_result:<mtlPy.XmgStats object at 0x7ff2896faaf0>
+05/13/2022, 22:56:06
+05/14/2022, 00:48:53
+processes: 1 best_num_of_gate: 596.0 4294967295.0random_test:718.0 baseline_run_result:<mtlPy.XmgStats object at 0x7f4252941c30> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f425294b870>
+05/14/2022, 00:51:10
+05/14/2022, 02:45:17
+processes: 1 best_num_of_gate: 599.0 4294967295.0random_test:753.5 baseline_run_result:<mtlPy.XmgStats object at 0x7fbc8ac6d130> baseline_double_run_result:<mtlPy.XmgStats object at 0x7fbc8aa62a70>
+05/14/2022, 02:48:14
+05/14/2022, 04:37:14
+processes: 1 best_num_of_gate: 602.0 4294967295.0random_test:761.3 baseline_run_result:<mtlPy.XmgStats object at 0x7f319226f330> baseline_double_run_result:<mtlPy.XmgStats object at 0x7f3191fa7c30>
+05/14/2022, 04:38:53
+05/14/2022, 06:53:59
