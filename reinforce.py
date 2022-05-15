@@ -5,7 +5,9 @@
 # @brief The REINFORCE algorithm
 #
 
+import xmgmap
 import numpy as np
+import os
 import torch
 from torch import nn
 import torch.nn.functional as F
@@ -327,10 +329,22 @@ def genTrajectory_mp(pipe_env, pipe_pi):
     # return 0
 
 T_list = []
+
+def map_priority(filename):
+    MAP = xmgmap.Mapping()
+    MAP.read(filename)
+    MAP.build_level()
+
+    MAP.priority_map()
+    if not xmgmap.INVERT_EDGES:
+        MAP.invert_result()
+    MAP.print_result()
+
 class Reinforce(object):
-    def __init__(self, env, gamma, pi, baseline, ben, filename, envs, process):
+    def __init__(self, env, gamma, pi, baseline, ben, filename, envs, process, brief_name):
         self._env = env
         self._envfile = filename
+        self.brief_name = brief_name
         self._envCopys = envs
         print(self._envCopys)
         self._gamma = gamma
@@ -475,6 +489,12 @@ class Reinforce(object):
             command_sequence += " "
         # self.memTrajectory.append(trajectory)
         self._env = trajectory.env_temp
+        self._env.write_verilog()
+        os.system('ls')
+        command_temp = "./converter -d --xor3 " + str(self.brief_name) +"_syn_out_opt_1.v"
+        os.system(command_temp)
+        map_priority(str(self.brief_name) +"_syn_out_opt_1.v")
+
         self.updateTrajectory(trajectory, phaseTrain)
 
         #print(self.memTrajectory.index(max(sum(self.memTrajectory.rewrads))))
@@ -499,7 +519,7 @@ class Reinforce(object):
         #what is this, seems useless
         #print("End self._pi.episode()")
 
-        return self._env.returns(), command_sequence
+        return self._env.returns(), command_sequence, np.mean(sum_reward)
         #that is return [self._curStats.numAnd , self._curStats.lev]
     def updateTrajectory(self, trajectory, phaseTrain=True):
         print("UpdateTraj")

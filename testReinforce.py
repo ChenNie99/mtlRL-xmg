@@ -25,7 +25,7 @@ class AbcReturn:
         return int(self.level) == int(other.level) and int(self.numNodes) == int(self.numNodes)
 def takeSecond(elem):
     return elem[0]
-def testReinforce(filename, ben, process):
+def testReinforce(filename, ben, process, brief_name):
     now = datetime.now()
     StartTime = now.strftime("%m/%d/%Y, %H:%M:%S") + "\n"
     print("StartTime ", StartTime)
@@ -48,7 +48,7 @@ def testReinforce(filename, ben, process):
     vbaseline = RF.BaselineVApprox(env.dimState(), 3e-3, RF.FcModel)
 
     #print("vbaseline:", vbaseline)
-    reinforce = RF.Reinforce(env, 0.9, vApprox, vbaseline, ben, filename, envCopyList, processes) #env, gamma, pi, baseline
+    reinforce = RF.Reinforce(env, 0.9, vApprox, vbaseline, ben, filename, envCopyList, processes, brief_name) #env, gamma, pi, baseline
 
     lastfive = []
     record = []
@@ -56,10 +56,10 @@ def testReinforce(filename, ben, process):
     TestRecordName = "/home/abcRL2.0-4-24/results/" + ben + "detailed-TestRecord.csv"
     for idx in range(200):
         print("Start epoch:", idx)
-        returns, command_sequence = reinforce.episode(phaseTrain=True, epoch=idx) # [nodes of Aig, depth of Aig]
+        returns, command_sequence, mean_rewards = reinforce.episode(phaseTrain=True, epoch=idx)
 
-        seqLen = reinforce.lenSeq
-        line = "iter " + str(idx) + " returns " + str(returns) + " seq Length " + str(seqLen) + "\n"
+        # seqLen = reinforce.lenSeq
+        line = "Epoch: " + str(idx) + " returns " + str(returns) + " mean_rewards: " + str(mean_rewards) + "\n"
         record.append(AbcReturn(returns))
         if idx >= 0:
             lastfive.append(AbcReturn(returns))
@@ -71,9 +71,9 @@ def testReinforce(filename, ben, process):
             line += " "
             line += str(lastfive[-1].numNodes)
             line += " "
-            line += str(lastfive[-1].level)
-            line += " "
             line += str(reinforce.sumRewards[-1])
+            line += " "
+            line += str(mean_rewards)
             line += "\n"
             tr.write(line)
 
@@ -172,7 +172,7 @@ if __name__ == "__main__":
     print("input file:", inputfile)
     print("name:", name)
     # print("process", process)
-    testReinforce(inputfile, name+"_xmg_9steps_"+process+"-in-1", int(process))
+    testReinforce(inputfile, name+"_xmg_9steps_"+process+"-in-1", int(process), name)
 
     #i10 c1355 c7552 c6288 c5315 dalu k2 mainpla apex1 bc0
     #testReinforce("./bench/MCNC/Combinational/blif/dalu.blif", "dalu")

@@ -800,6 +800,9 @@ class EnvGraph_mtl_xmg(object):
         self.lastAct7 = self.numActions() - 1
         self.actsTaken = np.zeros(self.numActions())
         return self.state()
+    def write_verilog(self):
+        self._abc.xmg_write(self._xmgfile)
+        print("sucessfully write_verilog:", self._xmgfile)
     def close(self):
         self.reset()
     def step(self, actionIdx):
