@@ -370,7 +370,7 @@ class Reinforce(object):
         # os.system(command_temp2)
         
         # self.end_to_end_init = xmg_evaluation(self.brief_name+"_opt_1_map.txt")
-        print(self.end_to_end_init)
+        # print(self.end_to_end_init)
     def genTrajectory(self, phaseTrain=True):
         print("generate Trajectory...")
         self._env.reset()

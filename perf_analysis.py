@@ -41,7 +41,7 @@ def xmg_evaluation(file_name):
         content = f.readlines()
     for line in content[1:-5]:
         inv_count += line.count("~")
-        items = line[:-].replace(" ","").replace("("," ").replace(")->"," ").replace(","," ").replace("~","").split(" ")
+        items = line[:-1].replace(" ","").replace("("," ").replace(")->"," ").replace(","," ").replace("~","").split(" ")
         if(items[0] == "AND"):
             xmg.append(["MAJ", int(items[1]), int(items[2]), -1, int(items[3])])
         elif(items[0] == "OR"):
