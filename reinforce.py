@@ -5,6 +5,7 @@
 # @brief The REINFORCE algorithm
 #
 
+import sys
 import xmgmap
 import numpy as np
 import os
@@ -330,15 +331,23 @@ def genTrajectory_mp(pipe_env, pipe_pi):
 
 T_list = []
 
-def map_priority(filename):
+def map_priority(filename, brief_name):
     MAP = xmgmap.Mapping()
-    MAP.read(filename)
+    MAP.read(filename, "")
     MAP.build_level()
 
     MAP.priority_map()
     if not xmgmap.INVERT_EDGES:
         MAP.invert_result()
-    MAP.print_result()
+    o_filename = brief_name + "_opt_1_map.txt"
+    output = sys.stdout
+    outputfile = open(o_filename, 'w+')
+    sys.stdout = outputfile
+    res = MAP.print_result()
+    # Maximum intermediate memory occupation during the calculation
+    # outputfile.close()
+    # sys.stdout = output
+    return res
 
 class Reinforce(object):
     def __init__(self, env, gamma, pi, baseline, ben, filename, envs, process, brief_name):
@@ -490,13 +499,13 @@ class Reinforce(object):
         # self.memTrajectory.append(trajectory)
         self._env = trajectory.env_temp
         self._env.write_verilog()
-        os.system('ls')
+        # os.system('ls')
         command_temp = "./converter -d --xor3 " + str(self.brief_name) +"_syn_out_opt_1.v"
         os.system(command_temp)
-        map_priority(str(self.brief_name) +"_syn_out_opt_1.v")
-
+        max_mem = map_priority(str(self.brief_name) +"_syn_out_opt_1_temp.txt", self.brief_name)
+        # Maximum intermediate memory occupation during the calculation
         self.updateTrajectory(trajectory, phaseTrain)
-
+        print("max_mem:", max_mem)
         #print(self.memTrajectory.index(max(sum(self.memTrajectory.rewrads))))
         print("\n")
         # input()
