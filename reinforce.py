@@ -4,7 +4,7 @@
 # @date 10/30/2019
 # @brief The REINFORCE algorithm
 #
-
+from perf_analysis import xmg_evaluation
 import sys
 import xmgmap
 import numpy as np
@@ -331,7 +331,7 @@ def genTrajectory_mp(pipe_env, pipe_pi):
 
 T_list = []
 
-def map_priority(filename, brief_name):
+def map_priority_inner(filename, brief_name):
     MAP = xmgmap.Mapping()
     MAP.read(filename, "")
     MAP.build_level()
@@ -355,7 +355,7 @@ class Reinforce(object):
         self._envfile = filename
         self.brief_name = brief_name
         self._envCopys = envs
-        print(self._envCopys)
+        # print(self._envCopys)
         self._gamma = gamma
         self._pi = pi
         self._baseline = baseline
@@ -364,6 +364,13 @@ class Reinforce(object):
         self.sumRewards = []
         self.ben = ben
         self.processes = process
+        # command_temp = "./converter -d --xor3 " + str(self.brief_name) +"_syn_out_opt_1.v"
+        # os.system(command_temp)
+        # command_temp2 = "python3 map_priority.py " + self.brief_name + "_syn_out_opt_1_temp.txt > "+self.brief_name+"_opt_1_map.txt"
+        # os.system(command_temp2)
+        
+        # self.end_to_end_init = xmg_evaluation(self.brief_name+"_opt_1_map.txt")
+        print(self.end_to_end_init)
     def genTrajectory(self, phaseTrain=True):
         print("generate Trajectory...")
         self._env.reset()
@@ -476,10 +483,10 @@ class Reinforce(object):
         # print(trajectory)
         # print("666\n")
         # print(sync_data_pool)
-        # #print(states_pool0)
         # print(states_pool0)
-        # #print(states_pool0[-1])
-        # #print(states_pool1[-1])
+        # print(states_pool0)
+        # print(states_pool0[-1])
+        # print(states_pool1[-1])
         # input()
         # self.memTrajectory = sync_data_pool
         # print(self.memTrajectory)
@@ -499,14 +506,20 @@ class Reinforce(object):
         # self.memTrajectory.append(trajectory)
         self._env = trajectory.env_temp
         self._env.write_verilog()
+         
         # os.system('ls')
-        command_temp = "./converter -d --xor3 " + str(self.brief_name) +"_syn_out_opt_1.v"
-        os.system(command_temp)
-        max_mem = map_priority(str(self.brief_name) +"_syn_out_opt_1_temp.txt", self.brief_name)
+        # command_temp = "./converter -d --xor3 " + str(self.brief_name) +"_syn_out_opt_1.v"
+        # os.system(command_temp)
+        # command_temp2 = "python3 map_priority.py " + self.brief_name + "_syn_out_opt_1_temp.txt > "+self.brief_name+"_opt_1_map.txt"
+        # max_mem = map_priority(str(self.brief_name) +"_syn_out_opt_1_temp.txt", self.brief_name)
+        # os.system(command_temp2)
+        # gate_num, latency, energy, row_usage = xmg_evaluation(self.brief_name+"_opt_1_map.txt")
+        # print(gate_num, latency, energy, row_usage)
+        # self.end_to_end_result = gate_num
         # Maximum intermediate memory occupation during the calculation
         self.updateTrajectory(trajectory, phaseTrain)
-        print("max_mem:", max_mem)
-        #print(self.memTrajectory.index(max(sum(self.memTrajectory.rewrads))))
+        # print("max_mem:", max_mem)
+        # print(self.memTrajectory.index(max(sum(self.memTrajectory.rewrads))))
         print("\n")
         # input()
         # self.memTrajectory.clear()
