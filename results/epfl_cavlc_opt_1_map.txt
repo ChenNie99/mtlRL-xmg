@@ -524,9 +524,7 @@ MAJ  (   ~1,   15,   34) -> 22
 OR   (         15,   22) -> 15
 MAJ  (    2,   10,  ~15) -> 15
 AND  (         10,   15) -> 10
-MAJ map_priority
-epfl_cavlc_syn_out_opt_1_temp.txt
- (    7,  ~69,   10) -> 10
+MAJ  (    7,  ~69,   10) -> 10
 AND  (        ~69,   10) -> 10
 MAJ  (    0,   79,   24) -> 15
 OR   (         79,   15) -> 15
@@ -630,8 +628,8 @@ AND  (        ~54,   11) -> 11
 OR   (          7,   11) -> 11
 MAJ  (   11,   50, ~107) -> 15
 AND  (         11,   15) -> 11
-Input: 1101001000
-Output: 01011000100
+Input: 0101100011
+Output: 00110101101
 Input size: 10
 Output size: 11
 Maximum intermediate memory occupation during the calculation: 127
