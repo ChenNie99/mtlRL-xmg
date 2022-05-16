@@ -40,7 +40,7 @@ class EnvGraph_mtl_xmg(object):
         print("Initial value", self.statValue(initStats))
 
         self.end_to_end_result = self.get_end2end_states()
-
+        print("Initial end2end result", self.end_to_end_result)
 
         # print("test the runtime for each action")
 

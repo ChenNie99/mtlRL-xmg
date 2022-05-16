@@ -56,7 +56,7 @@ def testReinforce(filename, ben, process, brief_name):
     TestRecordName = "/home/abcRL2.0-4-24/results/" + ben + "detailed-TestRecord.csv"
     for idx in range(200):
         print("Start epoch:", idx)
-        returns, command_sequence, mean_rewards = reinforce.episode(phaseTrain=True, epoch=idx)
+        returns, command_sequence, mean_rewards, gate_num, latency, energy, row_usage = reinforce.episode(phaseTrain=True, epoch=idx)
 
         # seqLen = reinforce.lenSeq
         line = "Epoch: " + str(idx) + " returns " + str(returns) + " mean_rewards: " + str(mean_rewards) + "\n"
@@ -74,6 +74,14 @@ def testReinforce(filename, ben, process, brief_name):
             line += str(reinforce.sumRewards[-1])
             line += " "
             line += str(mean_rewards)
+            line += " "
+            line += str(gate_num)
+            line += " "
+            line += str(latency)
+            line += " "
+            line += str(energy)
+            line += " "
+            line += str(row_usage)
             line += "\n"
             tr.write(line)
 

@@ -505,8 +505,8 @@ class Reinforce(object):
             command_sequence += " "
         # self.memTrajectory.append(trajectory)
         self._env = trajectory.env_temp
-        self._env.write_verilog()
-         
+        # self._env.write_verilog()
+        gate_num, latency, energy, row_usage = self._env.get_end2end_states()
         # os.system('ls')
         # command_temp = "./converter -d --xor3 " + str(self.brief_name) +"_syn_out_opt_1.v"
         # os.system(command_temp)
@@ -541,7 +541,7 @@ class Reinforce(object):
         #what is this, seems useless
         #print("End self._pi.episode()")
 
-        return self._env.returns(), command_sequence, np.mean(sum_reward)
+        return self._env.returns(), command_sequence, np.mean(sum_reward), gate_num, latency, energy, row_usage
         #that is return [self._curStats.numAnd , self._curStats.lev]
     def updateTrajectory(self, trajectory, phaseTrain=True):
         print("UpdateTraj")
