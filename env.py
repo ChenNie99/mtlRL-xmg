@@ -316,7 +316,7 @@ class EnvGraph_mtl_xmg(object):
         weighted_reward = (self._lastStats_end2end[self.target_end2end_index] - self._curStats_end2end[self.target_end2end_index])/self.end_to_end_result[self.target_end2end_index] - self._rewardBaseline[self.target_end2end_index]
         # print("lastStats:", self.statValue(self._lastStats), "curStats:", self.statValue(self._curStats),"rewardBaseline:", self._rewardBaseline)
         # print("final rewards:", self.statValue(self._lastStats) - self.statValue(self._curStats) - self._rewardBaseline)
-        old_reward = self.statValue(self._lastStats) - self.statValue(self._curStats) - self._rewardBaseline
+        # old_reward = self.statValue(self._lastStats) - self.statValue(self._curStats) - self._rewardBaseline
         # note that statValue is normalized
         return weighted_reward
         # return self._lastStats.numAnd + self._curStats.numAnd - 1
