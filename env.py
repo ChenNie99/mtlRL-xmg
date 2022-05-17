@@ -21,7 +21,9 @@ class EnvGraph_mtl_xmg(object):
         self._abc = mtlpy.MtlInterface()
         #self._abc = abcPy.AbcInterface()
         self._xmgfile = xmgfile
-
+        
+        self.target_end2end_index = 2
+        # gate_num=0, latency=1, energy=2, row_usage=3
 
         self._abc.xmg_start()
         print("read start ok")
@@ -41,7 +43,13 @@ class EnvGraph_mtl_xmg(object):
 
         self.end_to_end_result = self.get_end2end_states()
         print("Initial end2end result", self.end_to_end_result)
+        self.baselineActions()
+        self.baseline_end2end_result = self.get_end2end_states()
+        self._rewardBaseline = []
+        for i in range(4):
+            self._rewardBaseline.append((self.end_to_end_result[i] - self.baseline_end2end_result[i])/length_of_command)
 
+        
         # print("test the runtime for each action")
 
         # self.random = self.random_action_test()
@@ -305,10 +313,11 @@ class EnvGraph_mtl_xmg(object):
             return 0
 
         gate_num, latency, energy, row_usage = self.get_end2end_states()
-        weighted_reward = (self._lastStats_end2end[4] - self._curStats_end2end[4])/self.end_to_end_result[4]
+        weighted_reward = (self._lastStats_end2end[self.target_end2end_index] - self._curStats_end2end[self.target_end2end_index])/self.end_to_end_result[self.target_end2end_index] - self._rewardBaseline[self.target_end2end_index]
         # print("lastStats:", self.statValue(self._lastStats), "curStats:", self.statValue(self._curStats),"rewardBaseline:", self._rewardBaseline)
         # print("final rewards:", self.statValue(self._lastStats) - self.statValue(self._curStats) - self._rewardBaseline)
         old_reward = self.statValue(self._lastStats) - self.statValue(self._curStats) - self._rewardBaseline
+        # note that statValue is normalized
         return weighted_reward
         # return self._lastStats.numAnd + self._curStats.numAnd - 1
         if (self._curStats.numAnd < self._lastStats.numAnd and self._curStats.xmg_lev < self._lastStats.xmg_lev):
