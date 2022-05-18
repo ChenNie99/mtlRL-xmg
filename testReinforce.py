@@ -184,7 +184,7 @@ if __name__ == "__main__":
     print("name:", name)
     # print("process", process)
     target_list = ["gate_num-", "latency-", "energy-", "row_usage-"]
-    testReinforce(inputfile, name+"_xmg_9steps_"+str(process)+"-in-1-"+target_list[target], int(process), name, int(target))
+    testReinforce(inputfile, name+"_xmg_9steps_"+str(process)+"-in-1-"+target_list[int(target)], int(process), name, int(target))
 
     #i10 c1355 c7552 c6288 c5315 dalu k2 mainpla apex1 bc0
     #testReinforce("./bench/MCNC/Combinational/blif/dalu.blif", "dalu")
