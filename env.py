@@ -22,7 +22,7 @@ class EnvGraph_mtl_xmg(object):
         #self._abc = abcPy.AbcInterface()
         self._xmgfile = xmgfile
         
-        self.target_end2end_index = 1
+        self.target_end2end_index = 0
         # gate_num=0, latency=1, energy=2, row_usage=3
 
         self._abc.xmg_start()
