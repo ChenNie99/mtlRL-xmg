@@ -12,31 +12,31 @@ import numpy as np
 import statistics
 
 
-class AbcReturn:
+class MtlReturn:
     def __init__(self, returns):
-        self.numNodes = float(returns[0]) # in fact this is numGates
+        self.numGates = float(returns[0]) # in fact this is numGates
         self.level = float(returns[1])
     def __lt__(self, other):
         if (int(self.level) == int(other.level)):
-            return self.numNodes < other.numNodes
+            return self.numGates < other.numGates
         else:
             return self.level < other.level
     def __eq__(self, other):
-        return int(self.level) == int(other.level) and int(self.numNodes) == int(self.numNodes)
+        return int(self.level) == int(other.level) and int(self.numGates) == int(self.numGates)
 def takeSecond(elem):
     return elem[0]
-def testReinforce(filename, ben, process, brief_name):
+def testReinforce(filename, ben, process, brief_name, end2end_target):
     now = datetime.now()
     StartTime = now.strftime("%m/%d/%Y, %H:%M:%S") + "\n"
     print("StartTime ", StartTime)
-    env = Env(filename, 0)
+    env = Env(filename, 0, end2end_target)
     global_baseline_reward = env.baseline_command_sequence_test()
     print("global_baseline_reward_for_each_step", global_baseline_reward)
     processes = process
     print("processes:", processes)
     envCopyList = []
     for i in range(processes):
-        envCopyList.append(Env(filename, global_baseline_reward))
+        envCopyList.append(Env(filename, global_baseline_reward, end2end_target))
 
     #vApprox = Linear(env.dimState(), env.numActions())
 
@@ -60,16 +60,16 @@ def testReinforce(filename, ben, process, brief_name):
 
         # seqLen = reinforce.lenSeq
         line = "Epoch: " + str(idx) + " returns " + str(returns) + " mean_rewards: " + str(mean_rewards) + "\n"
-        record.append(AbcReturn(returns))
+        record.append(MtlReturn(returns))
         if idx >= 0:
-            lastfive.append(AbcReturn(returns))
+            lastfive.append(MtlReturn(returns))
         print(line)
 
         with open(TestRecordName, 'a') as tr:
             line = ""
             line += command_sequence
             line += " "
-            line += str(lastfive[-1].numNodes)
+            line += str(lastfive[-1].numGates)
             line += " "
             line += str(reinforce.sumRewards[-1])
             line += " "
@@ -104,7 +104,7 @@ def testReinforce(filename, ben, process, brief_name):
         line += str(processes)
         line += " "
         line += "best_num_of_gate: "
-        line += str(lastfive[0].numNodes)
+        line += str(lastfive[0].numGates)
         line += " "
         line += str(lastfive[0].level)
         #line += "\n"
@@ -162,14 +162,15 @@ if __name__ == "__main__":
     inputfile = ''
     name = ''
     process = ''
+    target = ''
     try:
-        opts, args = getopt.getopt(argv_, "hi:n:p:", ["ifile=", "name=", "process="])
+        opts, args = getopt.getopt(argv_, "hi:n:p:t", ["ifile=", "name=", "process=", "target="])
     except getopt.GetoptError:
-        print('testReinforce.py -i <inputfile> -n <name> -p <process>')
+        print('testReinforce.py -i <inputfile> -n <name> -p <process> -t <target: gate_num=0, latency=1, energy=2, row_usage=3>')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print('test.py -i <inputfile> -n <name> -p <process>')
+            print('test.py -i <inputfile> -n <name> -p <process> -t <target: gate_num=0, latency=1, energy=2, row_usage=3>')
             sys.exit()
         elif opt in ("-i", "--ifile"):
             inputfile = arg
@@ -177,10 +178,12 @@ if __name__ == "__main__":
             name = arg
         elif opt in ("-p", "--process"):
             process = arg
+        elif opt in ("-t", "--target"):
+            target = arg
     print("input file:", inputfile)
     print("name:", name)
     # print("process", process)
-    testReinforce(inputfile, name+"_xmg_9steps_"+process+"-in-1-latency-gate-", int(process), name)
+    testReinforce(inputfile, name+"_xmg_9steps_"+process+"-in-1-latency-gate-", int(process), name, int(target))
 
     #i10 c1355 c7552 c6288 c5315 dalu k2 mainpla apex1 bc0
     #testReinforce("./bench/MCNC/Combinational/blif/dalu.blif", "dalu")

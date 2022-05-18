@@ -17,12 +17,12 @@ class EnvGraph_mtl_xmg(object):
     """
     @brief the overall concept of environment, the different. use the compress2rs as target
     """
-    def __init__(self, xmgfile, rewardBaseline):
+    def __init__(self, xmgfile, rewardBaseline, end2end_target):
         self._abc = mtlpy.MtlInterface()
         #self._abc = abcPy.AbcInterface()
         self._xmgfile = xmgfile
         
-        self.target_end2end_index = 0
+        self.target_end2end_index = end2end_target
         # gate_num=0, latency=1, energy=2, row_usage=3
 
         self._abc.xmg_start()
