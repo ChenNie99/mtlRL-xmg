@@ -47,7 +47,7 @@ class EnvGraph_mtl_xmg(object):
         self.baseline_end2end_result = self.get_end2end_states()
         self._rewardBaseline = []
         for i in range(4):
-            self._rewardBaseline.append((self.end_to_end_result[i] - self.baseline_end2end_result[i])/length_of_command)
+            self._rewardBaseline.append((1 - self.baseline_end2end_result[i]/self.end_to_end_result[i])/length_of_command)
 
         
         # print("test the runtime for each action")
@@ -72,6 +72,7 @@ class EnvGraph_mtl_xmg(object):
         self.baseline_result = resynStats.numXmgGates
         self.baseline_double_run_result = resyn2Stats.numXmgGates
         totalReward = self.statValue(initStats) - self.statValue(resyn2Stats)
+        # note that state value is normalized
         self._rewardBaseline = totalReward / length_of_command  # 9 is the length of compress2rs sequence
         print("After double runs of baseline:")
         print("baseline num of XmgNodes ", resyn2Stats.numXmgNodes,
