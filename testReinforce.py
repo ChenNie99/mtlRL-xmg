@@ -56,7 +56,7 @@ def testReinforce(filename, ben, process, brief_name, end2end_target):
     TestRecordName = "/home/abcRL2.0-4-24/results/" + ben + "detailed-TestRecord.csv"
     for idx in range(200):
         print("Start epoch:", idx)
-        returns, command_sequence, mean_rewards, gate_num, latency, energy, row_usage = reinforce.episode(phaseTrain=True, epoch=idx)
+        returns, command_sequence, mean_rewards, gate_num, latency, energy, row_usage, energy_latency_product= reinforce.episode(phaseTrain=True, epoch=idx)
 
         # seqLen = reinforce.lenSeq
         line = "Epoch: " + str(idx) + " returns " + str(returns) + " mean_rewards: " + str(mean_rewards) + "\n"
@@ -82,6 +82,9 @@ def testReinforce(filename, ben, process, brief_name, end2end_target):
             line += str(energy)
             line += " "
             line += str(row_usage)
+
+            line += " "
+            line += str(energy_latency_product)
             line += "\n"
             tr.write(line)
 
@@ -183,7 +186,7 @@ if __name__ == "__main__":
     print("input file:", inputfile)
     print("name:", name)
     # print("process", process)
-    target_list = ["gate_num-", "latency-", "energy-", "row_usage-", "energy_latency_prodcut"]
+    target_list = ["gate_num-", "latency-", "energy-", "row_usage-", "energy_latency_prodcut-"]
     testReinforce(inputfile, name+"_xmg_9steps_"+str(process)+"-in-1-"+target_list[int(target)], int(process), name, int(target))
 
     #i10 c1355 c7552 c6288 c5315 dalu k2 mainpla apex1 bc0
