@@ -289,7 +289,7 @@ class EnvGraph_mtl_xmg(object):
         lastOneHotActs[self.lastAct3] += 1/3
         lastOneHotActs[self.lastAct] += 1/3
         lastOneHotActs[self.lastAct4] += 1/3
-        lastOneHotActs[self.lastAct5] += 1/3
+        
         stateArray = np.array([self._curStats_end2end[self.target_end2end_index]/self.end_to_end_result[self.target_end2end_index],self._lastStats_end2end[self.target_end2end_index]/self.end_to_end_result[self.target_end2end_index]])
         stepArray = np.array([float(self.lenSeq) / length_of_command])
         combined = np.concatenate((stateArray, lastOneHotActs, stepArray), axis=-1)
@@ -333,7 +333,7 @@ class EnvGraph_mtl_xmg(object):
     def numActions(self):
         return 8
     def dimState(self):
-        return 4 + self.numActions() * 1 + 1
+        return 2 + self.numActions() * 1 + 1
     def returns(self):
         return [self._curStats.numXmgGates, self._curStats.xmg_lev]
     def statValue(self, stat):
