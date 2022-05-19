@@ -52,8 +52,8 @@ def testReinforce(filename, ben, process, brief_name, end2end_target):
 
     lastfive = []
     record = []
-    resultName = "/home/abcRL2.0-4-24/results/" + ben + "basic-info.csv"
-    TestRecordName = "/home/abcRL2.0-4-24/results/" + ben + "detailed-TestRecord.csv"
+    resultName = "/home/abcRL2.0-4-24/end2end_result/" + ben + "basic-info.csv"
+    TestRecordName = "/home/abcRL2.0-4-24/end2end_results/" + ben + "detailed-TestRecord.csv"
     for idx in range(200):
         print("Start epoch:", idx)
         returns, command_sequence, mean_rewards, gate_num, latency, energy, row_usage, energy_latency_product= reinforce.episode(phaseTrain=True, epoch=idx)
