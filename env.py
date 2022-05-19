@@ -314,7 +314,7 @@ class EnvGraph_mtl_xmg(object):
         if self.lastAct == 8:  # term
             return 0
 
-        gate_num, latency, energy, row_usage = self.get_end2end_states()
+        # gate_num, latency, energy, row_usage,e*l = self.get_end2end_states()
         weighted_reward = (self._lastStats_end2end[self.target_end2end_index] - self._curStats_end2end[self.target_end2end_index])/self.end_to_end_result[self.target_end2end_index] - self._rewardBaseline[self.target_end2end_index]
         # print("lastStats:", self.statValue(self._lastStats), "curStats:", self.statValue(self._curStats),"rewardBaseline:", self._rewardBaseline)
         # print("final rewards:", self.statValue(self._lastStats) - self.statValue(self._curStats) - self._rewardBaseline)
