@@ -107,7 +107,7 @@ def xmg_evaluation(file_name):
                         
     print("gate_num:", gate_num, "latency(uS):",latency/1e3, "energy(nJ):", energy/1e6, "inv_ratio", inv_count/gate_num, "row_usage", row_used)  
     
-    return(gate_num, latency/1e3, energy/1e6, row_used)            
+    return(gate_num, latency/1e3, energy/1e6, row_used, (latency/1e3)*energy/1e6)            
                     
                         
                 
