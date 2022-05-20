@@ -141,12 +141,12 @@ class EnvGraph_mtl_xmg(object):
         self.reset()
 
         for action in range(self.numActions()):
-            starttime = datetime.now()
+            starttime = time.time()
             for i in range(repeat):
                 self.takeAction(action)
-            endtime = datetime.now()
+            endtime = time.time()
             print(action,":")
-            print("%s ms", (endtime - starttime)/repeat)
+            print("%d ms", (endtime - starttime)*1000/repeat)
             self.reset()
 
         
