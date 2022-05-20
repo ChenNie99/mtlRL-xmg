@@ -1,0 +1,25 @@
+numNodes in xmg: 4597
+0 :
+%d ms 221.43301963806152
+numNodes in xmg: 4597
+1 :
+%d ms 76.2911319732666
+numNodes in xmg: 4597
+2 :
+%d ms 606.4517974853516
+numNodes in xmg: 4597
+3 :
+%d ms 81.77714347839355
+numNodes in xmg: 4597
+4 :
+%d ms 96.67239189147949
+numNodes in xmg: 4597
+5 :
+%d ms 65.07492065429688
+numNodes in xmg: 4597
+6 :
+%d ms 1537.450933456421
+numNodes in xmg: 4597
+7 :
+%d ms 32609.031009674072
+numNodes in xmg: 4597
