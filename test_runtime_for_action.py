@@ -1,7 +1,7 @@
 import torch
 import numpy as np
 from env import EnvGraph_mtl_xmg as Env
-import sys
+import sys, getopt
 
 def test_action_runtime(inputfile, name_brief):
 
