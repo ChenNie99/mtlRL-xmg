@@ -7,7 +7,7 @@ def test_action_runtime(inputfile, name_brief):
 
     end2end_target = 4
     env = Env(inputfile, 0, end2end_target)
-    o_filename = name_brief + "_action_runtime.txt"
+    o_filename = "runtime4actions/" + name_brief + "_action_runtime.txt"
     output = sys.stdout
     outputfile = open(o_filename, 'w')
     sys.stdout = outputfile
