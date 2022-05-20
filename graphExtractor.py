@@ -83,7 +83,7 @@ def extract_dgl_graph_xmg(mtl):
     G = dgl.DGLGraph()
     G.add_nodes(numNodes)
     features = torch.zeros(numNodes, 10)
-    print("features",features)
+    # print("features",features)
     for nodeIdx in range(numNodes):
         xmgNode = mtl.xmgNode(nodeIdx)
 
@@ -94,6 +94,9 @@ def extract_dgl_graph_xmg(mtl):
             G.add_edge(fanin, nodeIdx)
         if (xmgNode.hasFanin1()):
             fanin = xmgNode.fanin1()
+            G.add_edge(fanin, nodeIdx)
+        if (xmgNode.hasFanin2()):
+            fanin = xmgNode.fanin2()
             G.add_edge(fanin, nodeIdx)
     G.ndata['feat'] = torch.tensor(features)
     return G
