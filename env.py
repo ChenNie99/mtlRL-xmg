@@ -139,16 +139,18 @@ class EnvGraph_mtl_xmg(object):
 
     def test_action_runtime_2(self, repeat):
         self.reset()
-
+        list_temp = []
         for action in range(self.numActions()):
+
             starttime = time.time()
             for i in range(repeat):
                 self.takeAction(action)
             endtime = time.time()
-            print(action,":")
-            print("%d ms", (endtime - starttime)*1000/repeat)
+            # print(action,":")
+            list_temp.append((endtime - starttime)*1000/repeat)
             self.reset()
-
+        print(list_temp)
+        return list_temp
         
     def baselineActions(self):
 
