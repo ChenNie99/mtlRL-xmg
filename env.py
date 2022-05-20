@@ -140,7 +140,7 @@ class EnvGraph_mtl_xmg(object):
     def test_action_runtime_2(self, repeat):
         self.reset()
 
-        for action in range(self.numAction):
+        for action in range(self.numActions()):
             starttime = datetime.now()
             for i in range(repeat):
                 self.takeAction(action)
