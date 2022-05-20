@@ -345,8 +345,8 @@ def map_priority_inner(filename, brief_name):
     sys.stdout = outputfile
     res = MAP.print_result()
     # Maximum intermediate memory occupation during the calculation
-    # outputfile.close()
-    # sys.stdout = output
+    outputfile.close()
+    sys.stdout = output
     return res
 
 class Reinforce(object):

@@ -137,45 +137,19 @@ class EnvGraph_mtl_xmg(object):
 
         os.system("pause")
 
-    def test_action_runtime_2(self):
-        starttime = datetime.now()
-        for i in range(10):
-            self._abc.xmg_dco()
-        endtime = datetime.now()
-        print("xmg_dco runtime:%s ms", (endtime - starttime))
+    def test_action_runtime_2(self, repeat):
+        self.reset()
 
-        starttime = datetime.now()
-        for i in range(10):
-            self._abc.xmg_resub()
-        endtime = datetime.now()
-        print("xmg_resub runtime:%s ms", (endtime - starttime))
+        for action in range(self.numAction):
+            starttime = datetime.now()
+            for i in range(repeat):
+                self.takeAction(action)
+            endtime = datetime.now()
+            print(action,":")
+            print("%s ms", (endtime - starttime)/repeat)
+            self.reset()
 
-        starttime = datetime.now()
-        for i in range(10):
-            self._abc.xmg_cut_rewrite()
-        endtime = datetime.now()
-        print("xmg_cut_rewrite runtime:%s ms", (endtime - starttime))
-
-        starttime = datetime.now()
-        for i in range(10):
-            self._abc.xmg_depth_rewrite(allow_size_increase=True, start='a', overhead=1.2)
-        endtime = datetime.now()
-        print("xmg_depth_rewrite(allow_size_increase=True, start='a', overhead=1.2) runtime:%s ms", (endtime - starttime))
-
-        starttime = datetime.now()
-        for i in range(10):
-            self._abc.xmg_node_resynthesis()
-        endtime = datetime.now()
-        print("xmg_node_resyn runtime:%s ms", (endtime - starttime))
-
-        starttime = datetime.now()
-        for i in range(10):
-            self._abc.xmg_depth_rewrite(start='s', allow_size_increase=False)
-        endtime = datetime.now()
-        print("xmg_depth_rewrite(start='s', allow_size_increase=False) runtime:%s ms", (endtime - starttime))
-
-        os.system("pause")
-        input()
+        
     def baselineActions(self):
 
         self._abc.xmg_resub()
