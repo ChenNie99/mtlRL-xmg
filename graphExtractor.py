@@ -82,7 +82,8 @@ def extract_dgl_graph_xmg(mtl):
 
     G = dgl.DGLGraph()
     G.add_nodes(numNodes)
-    features = torch.zeros(numNodes, 8)
+    features = torch.zeros(numNodes, 10)
+    print("features",features)
     for nodeIdx in range(numNodes):
         xmgNode = mtl.xmgNode(nodeIdx)
 

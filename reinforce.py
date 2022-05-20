@@ -83,7 +83,7 @@ class FcModelGraph(nn.Module):
         self.act2 = nn.ReLU()
         self.fc3 = nn.Linear(32, outChs)
         #self.gcn = GCN(6, 12, 4)
-        self.gcn = GCN(8, 12, 4) # for mig
+        self.gcn = GCN(10, 12, 4) # for mig
 
 
     def forward(self, x, graph):
